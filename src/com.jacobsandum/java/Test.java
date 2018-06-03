@@ -28,8 +28,8 @@ public class Test {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         //Fetch exported model and setup variables
-        bundle = SavedModelBundle.load("C:\\Users\\Jacob S\\Documents\\MNIST\\Model\\0.93", "serve");
-        //bundle = SavedModelBundle.load("C:\\Users\\Jacob S\\Desktop\\karl\\model", "serve");
+        //bundle = SavedModelBundle.load("C:\\Users\\Jacob S\\Documents\\MNIST\\Model\\0.93", "serve");
+        bundle = SavedModelBundle.load(System.getProperty("user.dir") + "\\Model", "serve");
         graph = bundle.graph();
         session = bundle.session();
         printModelOperations(graph);
@@ -65,7 +65,7 @@ public class Test {
         //Read result tensor
         float[][] resultFloat = new float[1][10];
         result.copyTo(resultFloat);
-        System.out.println("");
+        System.out.println("RESULT FLOAT");
         System.out.println(Arrays.deepToString(resultFloat));
     }
 
